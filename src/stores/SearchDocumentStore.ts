@@ -20,8 +20,7 @@ export const useSearchDocumentStore = defineStore('searchDocumentStore', () => {
     }
     const getFilteredDocuments = async (filter: string) => {
         loader.value = true
-        const filterParam: string = filter.toLowerCase().trim()
-        await axios.get<Document[]>(`${import.meta.env.VITE_API_URL}user/docs?search=${filterParam}`)
+        await axios.get<Document[]>(`${import.meta.env.VITE_API_URL}user/docs?search=${filter}`)
             .then(response => {
                 loader.value = false
                 documents.value = response.data;

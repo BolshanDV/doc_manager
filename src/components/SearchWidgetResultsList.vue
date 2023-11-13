@@ -8,15 +8,13 @@
           class="catalog__body"
           v-if="documentsStore.documents.length"
       >
-        <transition-group>
-          <search-widget-result-item
-              v-for="document of documentsStore.documents"
-              :key="document.id"
-              :document="document"
-              :activeElement="document.id === activeDocumentStore.activeDocument.id"
-              @click="activeDocumentStore.getActiveDocument(document)"
-          />
-        </transition-group>
+        <search-widget-result-item
+            v-for="document of documentsStore.documents"
+            :key="document.id"
+            :document="document"
+            :activeElement="document.id === activeDocumentStore.activeDocument.id"
+            @click="activeDocumentStore.getActiveDocument(document)"
+        />
       </div>
       <div
           v-else
@@ -62,16 +60,6 @@ const activeDocumentStore = useActiveDocumentStore()
   height: 60vh;
   overflow-y: scroll;
   padding: 0 20px;
-}
-
-.v-enter-active,
-.v-leave-active {
-  transition: opacity 0.5s ease;
-}
-
-.v-enter-from,
-.v-leave-to {
-  opacity: 0;
 }
 
 @media (max-width: 950px) {
