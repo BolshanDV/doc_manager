@@ -1,0 +1,15 @@
+@font-face {
+  font-weight: 700; /* Соответствует значению normal */
+  font-family: Montserrat;
+  src: url("../../static/fonts/Montserrat-Bold.ttf");
+}
+@font-face {
+  font-weight: 600; /* Соответствует значению normal */
+  font-family: Montserrat;
+  src: url("../../static/fonts/Montserrat-SemiBold.ttf");
+}
+@font-face {
+  font-weight: 400; /* Соответствует значению normal */
+  font-family: Montserrat;
+  src: url("../../static/fonts/Montserrat-Regular.ttf");
+}

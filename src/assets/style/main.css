@@ -1,0 +1,26 @@
+@import url("default.css");
+@import url("fonts.css");
+
+* {
+    font-family: Montserrat, sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    color: #000;
+}
+
+h1 {
+    font-size: 32px;
+    font-weight: 700;
+}
+
+h2 {
+    font-size: 16px;
+    font-weight: 600;
+}
+p {
+    font-size: 14px;
+    font-weight: 400;
+    color: #6C757D;
+}
