@@ -1,13 +1,10 @@
 <template>
   <header>
-    <div class="title">
-      <h1>MyApp</h1>
-    </div>
-    <div class="username">
-      <p>Username</p>
-    </div>
+    <h1 class="title">MyApp</h1>
+    <p class="username">Username</p>
   </header>
 </template>
+
 
 <style scoped>
 header {

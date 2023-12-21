@@ -1,36 +1,30 @@
 <template>
-  <div class="document"
-       :class="{document_active: activeElement}"
-  >
-    <div class="document__img">
+  <article class="document" :class="{document_active: activeElement}">
+    <figure class="document__img">
       <img
           v-if="document.image"
           :src="document.image"
           class="default_img"
-          alt="">
+          :alt="document.name"
+      >
       <img
           v-else
           src="../assets/icons/img.png"
           class="default_img"
-          alt=""
+          alt="Placeholder Image"
       >
-    </div>
+    </figure>
     <div class="document__body">
-      <div
-          class="document__text"
-          :class="{document__text_active: activeElement}"
-      >
+      <h2 class="document__text" :class="{document__text_active: activeElement}">
         {{ document.name }}
-      </div>
-      <div
-          class="document__desc"
-          :class="{document__desc_active: activeElement}"
-      >
+      </h2>
+      <p class="document__desc" :class="{document__desc_active: activeElement}">
         12 MB
-      </div>
+      </p>
     </div>
-  </div>
+  </article>
 </template>
+
 
 <script setup lang="ts">
 import type {Document} from "@/types/document.interface"

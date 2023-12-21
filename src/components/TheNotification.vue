@@ -1,17 +1,17 @@
 <template>
-  <div>
-    <div class="toasted">
-      <transition-group name="slide-fade">
-        <div class="toasted_element"
-             v-for="(notification, index) in notificationStore.notifications"
-             :key="index"
-        >
-          <div class="content_text">{{ notification }}</div>
-        </div>
-      </transition-group>
-    </div>
-  </div>
+  <section aria-live="polite" class="toasted">
+    <transition-group name="slide-fade">
+      <article
+          v-for="(notification, index) in notificationStore.notifications"
+          :key="index"
+          class="toasted_element"
+      >
+        <p class="content_text">{{ notification }}</p>
+      </article>
+    </transition-group>
+  </section>
 </template>
+
 
 <script setup lang="ts">
 import {useNotificationStore} from '@/stores/NotificationStore'

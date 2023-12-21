@@ -1,15 +1,17 @@
 <template>
-  <div class="search-form">
-    <p class="search-form__title">Поиск документа</p>
+  <form class="search-form" role="search">
+    <label for="document-search" class="search-form__title">Поиск документа</label>
     <input
         v-model="searchDoc"
+        id="document-search"
         placeholder="Введите ID документа"
         class="search-form__input"
         type="text"
         name="login"
     >
-  </div>
+  </form>
 </template>
+
 
 <script setup lang="ts">
 import {ref, watch} from "vue"

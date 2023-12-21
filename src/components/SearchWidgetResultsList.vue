@@ -1,31 +1,29 @@
 <template>
-  <div class="catalog">
-    <div class="catalog__title">
-      Результаты
-    </div>
+  <section class="catalog">
+    <header class="catalog__title">
+      <h2>Результаты</h2>
+    </header>
     <div v-if="!documentsStore.loader">
-      <div
+      <ul
           class="catalog__body"
           v-if="documentsStore.documents.length"
       >
-        <search-widget-result-item
-            v-for="document of documentsStore.documents"
-            :key="document.id"
-            :document="document"
-            :activeElement="document.id === activeDocumentStore.activeDocument.id"
-            @click="activeDocumentStore.getActiveDocument(document)"
-        />
-      </div>
-      <div
-          v-else
-          class="catalog__body"
-      >
+        <li v-for="document in documentsStore.documents" :key="document.id">
+          <search-widget-result-item
+              :document="document"
+              :activeElement="document.id === activeDocumentStore.activeDocument.id"
+              @click="activeDocumentStore.getActiveDocument(document)"
+          />
+        </li>
+      </ul>
+      <div v-else class="catalog__body">
         <p>Ничего не найдено</p>
       </div>
     </div>
-    <Loader v-else/>
-  </div>
+    <Loader v-else role="status"/>
+  </section>
 </template>
+
 
 <script setup lang="ts">
 import SearchWidgetResultItem from '@/components/SearchWidgetResultItem.vue'

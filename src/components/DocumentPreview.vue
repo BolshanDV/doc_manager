@@ -1,52 +1,46 @@
 <template>
-  <div class="preview">
-    <div class="preview-document"
-         v-if="activeDocumentStore.activeDocument.id"
-    >
-      <div class="preview-document__img">
+  <section class="preview">
+    <article v-if="activeDocumentStore.activeDocument.id" class="preview-document">
+      <figure class="preview-document__img">
         <img
             :src="activeDocumentStore.activeDocument.image"
-            class="document_img"
-            alt=""
+            class="preview-document__img"
+            :alt="activeDocumentStore.activeDocument.name"
         >
-      </div>
-      <div class="preview-document_body">
-        <div class="document__title title">
-          {{ activeDocumentStore.activeDocument.name }}
-        </div>
-        <div class="document__button">
+        <figcaption>{{ activeDocumentStore.activeDocument.name }}</figcaption>
+      </figure>
+      <div class="preview-document__body">
+        <header>
+          <h2 class="preview-document__title">{{ activeDocumentStore.activeDocument.name }}</h2>
+        </header>
+        <div class="preview-document__actions">
           <a
               :href="createHrefForDownload"
               download="messageText.txt"
-              class="button button_blue"
+              class="preview-document__button preview-document__button_blue"
           >
             Скачать
           </a>
           <button
-              class="button button_red"
+              class="preview-document__button preview-document__button_red"
               :disabled="!activeDocumentStore.activeDocument.image"
           >
             Удалить
           </button>
         </div>
-        <div class="document__description">
-          <div class="description__title title">
-            Описание:
-          </div>
-          <div class="description__text">
-            {{ activeDocumentStore.activeDocument.description }}
-          </div>
-        </div>
+        <section class="preview-document__description">
+          <h3 class="preview-document__description-title">Описание:</h3>
+          <p class="preview-document__description-text">{{ activeDocumentStore.activeDocument.description }}</p>
+        </section>
       </div>
-    </div>
-    <div
-        v-else
-        class="preview-document-center"
-    >
+    </article>
+    <div v-else class="preview-document-center">
       <p>Выберите документ, чтобы посмотреть его содержимое</p>
     </div>
-  </div>
+  </section>
 </template>
+
+
 
 <script setup lang="ts">
 import {useActiveDocumentStore} from "@/stores/ActiveDocumentStore";
@@ -80,28 +74,25 @@ const createHrefForDownload = computed((): string => {
   gap: 61px;
 }
 
-.title {
+.preview-document__title, .preview-document__description-text {
   color: #000;
   font-size: 16px;
   font-weight: 600;
   margin-bottom: 14px;
 }
 
-.description__text {
+.preview-document__description-text {
   color: #6C757D;
   font-size: 14px;
   font-weight: 400;
 }
 
-.document__button {
+.preview-document__button {
   display: flex;
   flex-direction: row;
   align-items: center;
   gap: 17px;
   margin-bottom: 47px;
-}
-
-.button {
   padding: 5px 28px;
   border-radius: 8px;
   background: #FFFFFF;
@@ -109,33 +100,33 @@ const createHrefForDownload = computed((): string => {
   text-decoration: none;
 }
 
-.button_blue {
-  border-color: #0D6EFD;
+.preview-document__button_blue, .preview-document__button_red {
   color: #0D6EFD;
+  border-color: #0D6EFD;
 }
 
-.button_blue:hover {
+.preview-document__button_blue:hover, .preview-document__button_red:hover {
   background: #8badff;
 }
 
-.button_blue:focus {
+.preview-document__button_blue:focus, .preview-document__button_red:focus {
   box-shadow: 0 0 0 2px #cbd6ee;
 }
 
-.button_red {
-  border-color: #DC3545;
+.preview-document__button_red {
   color: #DC3545;
+  border-color: #DC3545;
 }
 
-.button_red:hover {
+.preview-document__button_red:hover {
   background: #ff7883;
 }
 
-.button_red:focus {
+.preview-document__button_red:focus {
   box-shadow: 0 0 0 2px #eecbcb;
 }
 
-.button_red:disabled {
+.preview-document__button_red:disabled {
   border-color: #c4c4c4;
   color: #5b5b5b;
   background: #c4c4c4;
@@ -156,8 +147,9 @@ const createHrefForDownload = computed((): string => {
     gap: 30px;
   }
 
-  .document_img {
+  .preview-document__img {
     width: 100%;
   }
 }
 </style>
+
